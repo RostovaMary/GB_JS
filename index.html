@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.write("<h2>ДЗ№1 на JavaScript</h2>");
+    </script>
+
+
+    <script> //Перевод температуры в градусах по Цельсию в градусы по Фаренгейту
+        var tc, tf;
+        tc = 10;
+        tf = ((9 / 5) * tc + 32);
+        alert('Температура по Фаренгейту: ' + tf);
+    </script>
+
+    <script> //Присвоение админу имени =)
+        var admin, name;
+        name = 'Василий';
+        admin = name;
+        alert(admin);
+    </script>
+
+    Выражение 1000 + "108" будет равно 1000108, потому что "108" это строка, а не число, и 1000 и "108" просто
+    склеятся, а не арифметически сложатся.
+
+    <script> // Меняем местами переменные без третьей переменной
+        var a = 2, b = 3;
+        [a, b] = [b, a] // меняем местами a и b
+        console.log('a =', a, 'b =', b);
+    </script>
+
+    <script> // Меняем местами переменные без третьей переменной, второй вариант 
+        var a = 2, b = 3;
+        a = b + (b = a, 0);
+        console.log('a =', a, 'b =', b);
+    </script>
+</body>
+
+</html>
