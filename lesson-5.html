@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Chessboard</title>
+</head>
+
+<body>
+    <!-- 1. Создать функцию, генерирующую шахматную доску. При этом можно использовать любые html-теги по своему желанию. Доска должна быть разлинована соответствующим образом, т.е. чередовать черные и белые ячейки. Строки должны нумероваться числами от 1 до 8, столбцы – латинскими буквами A, B, C, D, E, F, G, H.
+2. Заполнить созданную таблицу буквами, отвечающими за шахматную фигуру, например К – король, Ф – ферзь и т.п., причем все фигуры должны стоять на своих местах и быть соответственно черными и белыми.
+3. *Заменить буквы, обозначающие фигуры, картинками. -->
+    <script>
+        var width = 10;
+        var height = 10;
+        var content =
+            [
+                [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '],
+                ['1', '&#9814;', '&#9816;', '&#9815;', '&#9813;', '&#9812;', '&#9815;', '&#9816;', '&#9814;', '1'],
+                ['2', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '2'],
+                ['3', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '3'],
+                ['4', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '4'],
+                ['5', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '5'],
+                ['6', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '6'],
+                ['7', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '7'],
+                ['8', '&#9820;', '&#9822;', '&#9821;', '&#9819;', '&#9818;', '&#9821;', '&#9822;', '&#9820;', '8'],
+                [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' ']
+            ];
+
+        window.onload = start;
+
+        function start() {
+
+            var chessboard = document.createElement('table');
+
+
+            for (var i = 0; i < width; i++) {
+
+                var row = document.createElement('tr');
+
+                for (var j = 0; j < height; j++) {
+
+                    var cell = document.createElement('td');
+                    if (i == 0 || j == 0 || i == width - 1 || j == height - 1) {
+
+                        if (j == height - 1 || i == 0) {
+                            cell.className += 'rotate';
+                        }
+                    }
+                    else {
+                        cell.className = (i + j) % 2 == 0 ? 'whitecell' : 'blackcell';
+                    }
+                    cell.innerHTML = content[i][j];
+
+                    row.appendChild(cell);
+                }
+                chessboard.appendChild(row);
+            }
+
+            document.getElementById('chessboard').appendChild(chessboard);
+        }
+    </script>
+    <div class="container">
+        <div id="chessboard"></div>
+    </div>
+
+</body>
+
+</html>
