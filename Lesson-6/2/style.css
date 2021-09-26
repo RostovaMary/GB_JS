@@ -1,0 +1,22 @@
+.div_item {
+    width: 200px;
+    height: 260px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+}
+.sum {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.cart {
+    border: 1px solid #000;
+}
+.items {
+    border: 1px solid #000;
+}
+.button {
+    margin: 0 auto;
+    padding: 5px 15px;
+}
