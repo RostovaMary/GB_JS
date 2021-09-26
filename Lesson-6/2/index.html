@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cart">
+        <h3>Корзина:</h3>
+        <table class="selected_items"></table>
+        <span class="sum"></span>
+    </div>
+    <div class="items">
+        <h3>Каталог:</h3>
+        <div class="catalog">
+
+        </div>
+    </div>
+    <script>
+        var i1 = {
+            name: "Платье",
+            imgSrc: "img/Платье.jpg",
+            price: 10000
+        };
+
+        var i2 = {
+            name: "Свитер",
+            imgSrc: "img/Свитер.jpg",
+            price: 6000
+        };
+
+        var i3 = {
+            name: "Пальто",
+            imgSrc: "img/Пальто.jpg",
+            price: 26000
+        };
+
+        var i4 = {
+            name: "Джинсы",
+            imgSrc: "img/Джинсы.jpg",
+            price: 11000
+        };
+        var i5 = {
+            name: "Рубашка",
+            imgSrc: "img/Рубашка.jpg",
+            price: 8000
+        };
+
+        var itemsArray = [i1, i2, i3, i4, i5];
+
+        var sum = 0;
+
+        function init() {
+            var catalog = document.getElementsByClassName("catalog")[0];
+            for (i = 0; i < itemsArray.length; i++) {
+                item = document.createElement("div");
+                item.classList.add("div_item");
+                item.appendChild(document.createTextNode(itemsArray[i].name));
+                itemImg = document.createElement("img");
+                itemImg.src = itemsArray[i].imgSrc;
+                item.appendChild(itemImg);
+                item.appendChild(document.createTextNode(itemsArray[i].price + "\u20bd"));
+                itemBtn = document.createElement("button");
+                itemBtn.textContent = "buy";
+                itemBtn.classList.add("button");
+                itemBtn.setAttribute("id", "btn_" + i);
+                itemBtn.onclick = addItem;
+                item.appendChild(itemBtn);
+                catalog.appendChild(item);
+            }
+        }
+
+        function addItem(obj) {
+
+            var selectedItem = itemsArray[obj.target.id.split("_")[1]];
+            var selectedItems = document.getElementsByClassName("selected_items")[0];
+            var tr = selectedItems.insertRow(-1);
+            var td = tr.insertCell(-1);
+            td.appendChild(document.createTextNode(selectedItem.name));
+            var td = tr.insertCell(-1);
+            td.appendChild(document.createTextNode("    " + selectedItem.price + "\u20bd"));
+            sum += selectedItem.price;
+            document.getElementsByClassName("sum")[0].textContent = "Сумма: " + sum + "\u20bd";
+        }
+        window.onload = init;
+    </script>
+</body>
+
+</html>
